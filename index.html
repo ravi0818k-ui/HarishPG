@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Harish PG – Shanti Nagar, Gurugram</title>
+  <title>PG A1 – Shanti Nagar, Gurugram</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -377,7 +378,7 @@
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo">Harish <span>PG</span></div>
+  <div class="nav-logo">PG <span>A1</span></div>
   <div class="nav-links">
     <a href="#gallery">Photos</a>
     <a href="#rooms">Rooms</a>
@@ -392,9 +393,9 @@
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <div class="hero-badge">🏠 Premium PG — Shanti Nagar, Gurugram</div>
+    <div class="hero-badge">🏠 PG A1 — Shanti Nagar, Gurugram</div>
     <h1 class="hero-title">Your Home<br>Away from Home</h1>
-    <p class="hero-sub">Fully furnished, AC & Non-AC rooms in the heart of Gurgaon.<br>Clean, safe & comfortable — move in today.</p>
+    <p class="hero-sub">Fully furnished AC rooms with double bed in the heart of Gurgaon.<br>Clean, safe & comfortable — move in today.</p>
     <div class="hero-btns">
       <a href="tel:+917011450620" class="btn-primary">📞 Call Now</a>
       <a href="#gallery" class="btn-outline">View Photos ↓</a>
@@ -408,7 +409,7 @@
     <div class="hl-icon">🛏</div>
     <div>
       <div class="hl-label">Rooms</div>
-      <div class="hl-val">AC & Non-AC</div>
+      <div class="hl-val">AC Double Bed</div>
     </div>
   </div>
   <div class="hl-item">
@@ -450,8 +451,8 @@
       <div class="g-label">AC Room</div>
     </div>
     <div class="gallery-item g-small" onclick="openLightbox('images/photo4.jpeg')">
-      <img src="images/photo4.jpeg" alt="Non-AC Room" />
-      <div class="g-label">Non-AC Room</div>
+      <img src="images/photo4.jpeg" alt="AC Room" />
+      <div class="g-label">AC Double Bed Room</div>
     </div>
     <div class="gallery-item g-small" onclick="openLightbox('images/photo3.jpeg')">
       <img src="images/photo3.jpeg" alt="Bathroom" />
@@ -471,51 +472,95 @@
 <!-- ROOMS & PRICING -->
 <section id="rooms">
   <div class="section-label">Room Types & Pricing</div>
-  <h2 class="section-title">Choose Your Room</h2>
-  <p class="section-desc">Affordable pricing with all essential amenities included. No hidden charges.</p>
+  <h2 class="section-title">Simple, Transparent Pricing</h2>
+  <p class="section-desc">All-inclusive rent with food &amp; fully furnished rooms. No hidden charges.</p>
   <div class="divider"></div>
-  <div class="rooms-grid">
 
-    <div class="room-card">
-      <div class="room-card-img"><img src="images/photo4.jpeg" alt="Non-AC Room" /></div>
-      <div class="room-card-body">
-        <div class="room-type">Standard</div>
-        <div class="room-name">Non-AC Single Room</div>
-        <ul class="room-features">
-          <li>Furnished with bed & mattress</li>
-          <li>Ceiling fan</li>
-          <li>Attached clean bathroom</li>
-          <li>TV included</li>
-          <li>Wi-Fi ready</li>
-        </ul>
-        <div class="room-price">
-          <div class="price-amt">₹6,000</div>
-          <div class="price-period">/ month</div>
-          <div class="price-badge">Available</div>
-        </div>
+  <!-- Pricing Banner -->
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-bottom:2.5rem;">
+    <div style="background:var(--amber);border-radius:12px;padding:1.6rem 1.4rem;text-align:center;">
+      <div style="font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.75);margin-bottom:.5rem;">Monthly Rent</div>
+      <div style="font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:900;color:#fff;line-height:1;">&#8377;7,000</div>
+      <div style="font-size:.85rem;color:rgba(255,255,255,.85);margin-top:.4rem;">per bed &middot; Double Sharing</div>
+    </div>
+    <div style="background:var(--white);border:2px solid var(--sand);border-radius:12px;padding:1.6rem 1.4rem;text-align:center;">
+      <div style="font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);margin-bottom:.5rem;">Security Deposit</div>
+      <div style="font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:900;color:var(--dark);line-height:1;">&#8377;3,000</div>
+      <div style="font-size:.85rem;color:var(--mid);margin-top:.4rem;">One-time &middot; Fully Refundable</div>
+    </div>
+    <div style="background:var(--white);border:2px solid var(--sand);border-radius:12px;padding:1.6rem 1.4rem;text-align:center;">
+      <div style="font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);margin-bottom:.5rem;">Food Included</div>
+      <div style="font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:900;color:var(--dark);line-height:1.2;">Breakfast &amp; Dinner</div>
+      <div style="font-size:.85rem;color:var(--mid);margin-top:.4rem;">+ Lunch on Sat &amp; Sun</div>
+    </div>
+  </div>
+
+  <!-- Single Designer Room Card -->
+  <div style="background:var(--white);border-radius:20px;overflow:hidden;box-shadow:0 16px 56px rgba(26,20,16,.13);display:grid;grid-template-columns:1fr 1fr;max-width:900px;margin:0 auto;">
+
+    <!-- Left: Image -->
+    <div style="position:relative;min-height:420px;overflow:hidden;">
+      <img src="images/photo5.jpeg" alt="AC Room" style="width:100%;height:100%;object-fit:cover;display:block;" />
+      <div style="position:absolute;bottom:16px;left:16px;width:90px;height:70px;border-radius:10px;overflow:hidden;border:2px solid #fff;box-shadow:0 4px 16px rgba(0,0,0,.25);">
+        <img src="images/photo4.jpeg" alt="Room view" style="width:100%;height:100%;object-fit:cover;" />
+      </div>
+      <div style="position:absolute;top:16px;left:16px;background:var(--amber);color:#fff;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.35rem .8rem;border-radius:20px;">
+        &#10003; Available Now
       </div>
     </div>
 
-    <div class="room-card">
-      <div class="room-card-img"><img src="images/photo5.jpeg" alt="AC Room" /></div>
-      <div class="room-card-body">
-        <div class="room-type">Premium</div>
-        <div class="room-name">AC Double Room</div>
-        <ul class="room-features">
-          <li>Furnished with double bed</li>
-          <li>Air conditioner + ceiling fan</li>
-          <li>Attached bathroom</li>
-          <li>Wardrobe & side tables</li>
-          <li>Wi-Fi ready</li>
-        </ul>
-        <div class="room-price">
-          <div class="price-amt">₹8,500</div>
-          <div class="price-period">/ month</div>
-          <div class="price-badge">Available</div>
+    <!-- Right: Details -->
+    <div style="padding:2.2rem 2rem;display:flex;flex-direction:column;justify-content:space-between;">
+      <div>
+        <div style="font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);margin-bottom:.5rem;">Fully Furnished &middot; AC &middot; Double Sharing</div>
+        <div style="font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:800;color:var(--dark);line-height:1.2;margin-bottom:1.4rem;">AC Double<br>Sharing Room</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:.55rem .8rem;margin-bottom:1.6rem;">
+          <div style="display:flex;align-items:center;gap:.45rem;font-size:.83rem;color:var(--mid);"><span style="color:var(--amber);font-weight:700;">&#10003;</span> Air Conditioning</div>
+          <div style="display:flex;align-items:center;gap:.45rem;font-size:.83rem;color:var(--mid);"><span style="color:var(--amber);font-weight:700;">&#10003;</span> Geyser</div>
+          <div style="display:flex;align-items:center;gap:.45rem;font-size:.83rem;color:var(--mid);"><span style="color:var(--amber);font-weight:700;">&#10003;</span> Wi-Fi Internet</div>
+          <div style="display:flex;align-items:center;gap:.45rem;font-size:.83rem;color:var(--mid);"><span style="color:var(--amber);font-weight:700;">&#10003;</span> Washing Machine</div>
+          <div style="display:flex;align-items:center;gap:.45rem;font-size:.83rem;color:var(--mid);"><span style="color:var(--amber);font-weight:700;">&#10003;</span> Double Bed</div>
+          <div style="display:flex;align-items:center;gap:.45rem;font-size:.83rem;color:var(--mid);"><span style="color:var(--amber);font-weight:700;">&#10003;</span> Wardrobe</div>
+        </div>
+        <div style="background:var(--warm);border-radius:10px;padding:.9rem 1rem;margin-bottom:1.6rem;">
+          <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--amber);margin-bottom:.35rem;">&#127869; Meals Included</div>
+          <div style="font-size:.82rem;color:var(--mid);line-height:1.6;">
+            Mon&ndash;Fri: Breakfast + Dinner<br>
+            Sat &amp; Sun: All 3 meals (Breakfast + Lunch + Dinner)
+          </div>
         </div>
       </div>
+      <div style="border-top:1px solid var(--sand);padding-top:1.2rem;display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:.5rem;">
+        <div>
+          <div style="font-size:.72rem;color:var(--light);text-transform:uppercase;letter-spacing:.08em;">Monthly Rent</div>
+          <div style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:var(--dark);line-height:1.1;">&#8377;7,000 <span style="font-size:.9rem;font-weight:400;color:var(--mid);">/ bed</span></div>
+          <div style="font-size:.78rem;color:var(--mid);margin-top:.2rem;">+ &#8377;3,000 refundable deposit</div>
+        </div>
+        <a href="tel:+917011450620" style="background:var(--amber);color:#fff;padding:.7rem 1.4rem;border-radius:8px;font-size:.88rem;font-weight:700;text-decoration:none;white-space:nowrap;">
+          &#128222; Book Now
+        </a>
+      </div>
     </div>
+  </div>
 
+  <!-- Mobile fallback style for the card -->
+  <style>
+    @media(max-width:640px){
+      #rooms > div:last-of-type > div:first-child { display: block !important; }
+      #rooms > div:last-of-type > div:first-child > div:first-child { min-height: 240px !important; }
+    }
+  </style>
+
+  <!-- Food Schedule Note -->
+  <div style="margin-top:2rem;background:var(--warm);border-left:4px solid var(--amber);border-radius:0 10px 10px 0;padding:1.2rem 1.5rem;display:flex;gap:1rem;align-items:flex-start;">
+    <div style="font-size:1.4rem;">&#127869;</div>
+    <div>
+      <div style="font-weight:700;color:var(--dark);margin-bottom:.3rem;">Meal Schedule</div>
+      <div style="font-size:.9rem;color:var(--mid);line-height:1.7;">
+        <strong style="color:var(--charcoal);">Mon &ndash; Fri:</strong> Breakfast + Dinner &nbsp;|&nbsp;
+        <strong style="color:var(--charcoal);">Sat &amp; Sun:</strong> Breakfast + Lunch + Dinner (all 3 meals included)
+      </div>
+    </div>
   </div>
 </section>
 
@@ -526,13 +571,13 @@
   <p class="section-desc">Everything you need for a comfortable stay — all included in the monthly rent.</p>
   <div class="divider" style="background:var(--amber2);"></div>
   <div class="amenities-grid">
-    <div class="amenity-card"><div class="amenity-icon">🛏</div><div class="amenity-name">Furnished Rooms</div></div>
+    <div class="amenity-card"><div class="amenity-icon">🏠</div><div class="amenity-name">Fully Furnished</div></div>
     <div class="amenity-card"><div class="amenity-icon">❄️</div><div class="amenity-name">Air Conditioning</div></div>
-    <div class="amenity-card"><div class="amenity-icon">🚿</div><div class="amenity-name">Attached Bathroom</div></div>
-    <div class="amenity-card"><div class="amenity-icon">📺</div><div class="amenity-name">Television</div></div>
+    <div class="amenity-card"><div class="amenity-icon">🚿</div><div class="amenity-name">Geyser</div></div>
+    <div class="amenity-card"><div class="amenity-icon">👕</div><div class="amenity-name">Washing Machine</div></div>
     <div class="amenity-card"><div class="amenity-icon">📶</div><div class="amenity-name">Wi-Fi Internet</div></div>
     <div class="amenity-card"><div class="amenity-icon">🔒</div><div class="amenity-name">24/7 Security</div></div>
-    <div class="amenity-card"><div class="amenity-icon">💡</div><div class="amenity-name">Power Backup</div></div>
+    <div class="amenity-card"><div class="amenity-icon">🍽️</div><div class="amenity-name">Meals Included</div></div>
     <div class="amenity-card"><div class="amenity-icon">🏋️</div><div class="amenity-name">Gym Nearby</div></div>
   </div>
 </section>
@@ -579,13 +624,14 @@
         </div>
       </div>
       <div class="nearby">
-        <h4>Nearby</h4>
+        <h4>Nearby Landmarks</h4>
         <ul class="nearby-list">
           <li>The Bodyline Gym – same building</li>
-          <li>Ganga Apartment, Shanti Nagar</li>
-          <li>Huda City Centre Metro – ~3 km</li>
-          <li>Cyber Hub, DLF Cyber City – ~5 km</li>
-          <li>Sector 14 Market – nearby</li>
+          <li>Rajiv Chowk – 900 m</li>
+          <li>Kandsa Road, SD School – 200 m</li>
+          <li>Pace City 1 – 1.2 km</li>
+          <li>Sector 37 Industrial Area – 1.8 km</li>
+          <li>Honda Chowk – 2.8 km</li>
         </ul>
       </div>
     </div>
@@ -613,7 +659,7 @@
         <div class="c-icon">👤</div>
         <div>
           <div class="c-label">Owner</div>
-          <div class="c-val">Harish PG</div>
+          <div class="c-val">PG A1</div>
         </div>
       </div>
       <div class="contact-item">
@@ -640,7 +686,7 @@
 
 <!-- FOOTER -->
 <footer>
-  <p>© 2025 <span>Harish PG</span> · Shanti Nagar, Gurugram, Haryana · All rights reserved</p>
+  <p>© 2025 <span>PG A1</span> · Shanti Nagar, Gurugram, Haryana · All rights reserved</p>
 </footer>
 
 <!-- LIGHTBOX -->
