@@ -7,7 +7,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700;900&family=DM+Sans:wght@300;400;500&family=Roboto:wght@400;700;900&display=swap" rel="stylesheet" />
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -47,10 +47,11 @@
       height: 64px;
     }
     .nav-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.35rem; font-weight: 700;
+      font-family: 'Roboto', sans-serif;
+      font-size: 1.35rem; font-weight: 900;
       color: var(--dark);
-      letter-spacing: -.01em;
+      letter-spacing: .04em;
+      text-transform: uppercase;
     }
     .nav-logo span { color: var(--amber); }
     .nav-links { display: flex; gap: 2rem; }
@@ -378,7 +379,7 @@
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo" style="display:flex;align-items:baseline;gap:.15rem;line-height:1;"><span style="font-size:1.7rem;font-weight:700;">PG A</span><span style="font-size:3.5rem;font-weight:900;color:var(--amber);line-height:1;">1</span></div>
+  <div class="nav-logo" style="display:flex;align-items:center;gap:0;font-family:'Roboto',sans-serif;letter-spacing:.05em;text-transform:uppercase;line-height:1;overflow:hidden;height:64px;"><span style="font-size:1.4rem;font-weight:700;color:var(--dark);">PG&nbsp;A</span><span style="font-size:2rem;font-weight:900;color:var(--amber);line-height:1;letter-spacing:-.02em;">1</span></div>
   <div class="nav-links">
     <a href="#gallery">Photos</a>
     <a href="#rooms">Rooms</a>
