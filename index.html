@@ -497,7 +497,7 @@
   </div>
 
   <!-- Two Column Room Cards -->
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;max-width:980px;margin:0 auto;">
+  <div id="room-cards" style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;max-width:980px;margin:0 auto;">
 
     <!-- Card 1 -->
     <div style="background:var(--white);border-radius:20px;overflow:hidden;box-shadow:0 16px 56px rgba(26,20,16,.13);display:flex;flex-direction:column;">
@@ -566,8 +566,11 @@
   </div>
 
   <style>
-    @media(max-width:640px){
-      #rooms .rooms-two-col { grid-template-columns:1fr !important; }
+    @media(max-width:700px){
+      #room-cards {
+        grid-template-columns: 1fr !important;
+        gap: 1.2rem !important;
+      }
     }
   </style>
 
