@@ -169,11 +169,11 @@
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: auto;
+      grid-template-rows: 210px 210px;
       gap: 12px;
     }
-    .gallery-grid .g-main {
-      grid-column: 1 / 3; grid-row: 1 / 3;
+    .gallery-grid .g-vertical {
+      grid-column: 1; grid-row: 1 / 3;
     }
     .gallery-item {
       overflow: hidden; border-radius: 8px;
@@ -185,8 +185,15 @@
       display: block;
     }
     .gallery-item:hover img { transform: scale(1.04); }
-    .g-main { height: 420px; }
-    .g-small { height: 204px; }
+    .g-vertical { height: 100%; }
+    .g-small { height: 210px; }
+    .gallery-more {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 12px;
+    }
+    .gallery-more .gallery-item { height: 200px; }
     .gallery-item .g-label {
       position: absolute; bottom: 0; left: 0; right: 0;
       background: linear-gradient(transparent, rgba(26,20,16,.7));
@@ -379,11 +386,48 @@
       background: rgba(0,0,0,.92); align-items: center; justify-content: center;
     }
     .lightbox.active { display: flex; }
-    .lightbox img { max-width: 90vw; max-height: 90vh; border-radius: 6px; object-fit: contain; }
+    .lightbox img {
+      max-width: calc(100vw - 140px); max-height: 90vh;
+      border-radius: 6px; object-fit: contain;
+      -webkit-user-select: none; user-select: none;
+    }
     .lightbox-close {
       position: absolute; top: 1.5rem; right: 2rem;
       color: var(--white); font-size: 2rem; cursor: pointer;
       background: none; border: none; line-height: 1;
+    }
+    .lightbox-nav {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      background: rgba(255,255,255,.12); border: 1.5px solid rgba(255,255,255,.25);
+      color: var(--white); font-size: 1.5rem;
+      width: 52px; height: 52px; border-radius: 50%;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: background .2s;
+      -webkit-user-select: none; user-select: none;
+    }
+    .lightbox-nav:hover { background: rgba(255,255,255,.25); }
+    .lightbox-prev { left: 1.5rem; }
+    .lightbox-next { right: 1.5rem; }
+    .lightbox-counter {
+      position: absolute; bottom: 1.4rem; left: 50%; transform: translateX(-50%);
+      color: rgba(255,255,255,.6); font-size: .82rem; letter-spacing: .06em;
+    }
+    @media (max-width: 600px) {
+      .lightbox img { max-width: calc(100vw - 100px); }
+      .lightbox-nav { width: 40px; height: 40px; font-size: 1.1rem; }
+      .lightbox-prev { left: .6rem; }
+      .lightbox-next { right: .6rem; }
+    }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .55s ease, transform .55s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     /* ── RESPONSIVE ── */
@@ -391,9 +435,11 @@
       nav { padding: 0 4vw; }
       .nav-links { display: none; }
       section { padding: 4rem 5vw; }
-      .gallery-grid { grid-template-columns: 1fr 1fr; }
-      .g-main { grid-column: 1 / -1; grid-row: auto; height: 260px; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+      .g-vertical { grid-column: 1 / -1; grid-row: auto; height: 260px; }
       .g-small { height: 160px; }
+      .gallery-more { grid-template-columns: 1fr 1fr; }
+      .gallery-more .gallery-item { height: 160px; }
       .location-wrap, .contact-wrap { grid-template-columns: 1fr; }
       .map-container { height: 280px; }
       .highlights { grid-template-columns: repeat(2, 1fr); gap: 1.2rem; }
@@ -492,9 +538,9 @@
   <p class="section-desc">Clean, modern spaces thoughtfully designed for your comfort and privacy.</p>
   <div class="divider"></div>
   <div class="gallery-grid">
-    <div class="gallery-item g-main" onclick="openLightbox('images/photo1.jpeg')">
-      <img src="images/photo1.jpeg" alt="Building Exterior" />
-      <div class="g-label">Building Exterior – Shanti Nagar</div>
+    <div class="gallery-item g-vertical" onclick="openLightbox('images/First.jpeg')">
+      <img src="images/First.jpeg" alt="PG A1 Main View" />
+      <div class="g-label">PG A1 – Main Entrance</div>
     </div>
     <div class="gallery-item g-small" onclick="openLightbox('images/photo5.jpeg')">
       <img src="images/photo5.jpeg" alt="AC Room" />
@@ -512,9 +558,60 @@
       <img src="images/photo.jpeg" alt="Corridor" />
       <div class="g-label">Corridor</div>
     </div>
-    <div class="gallery-item g-small" onclick="openLightbox('images/photo2.jpeg')">
+  </div>
+
+  <div class="gallery-more">
+    <div class="gallery-item reveal" onclick="openLightbox('images/main photo PG A1.jpeg')">
+      <img src="images/main photo PG A1.jpeg" alt="PG A1 Main Photo" />
+      <div class="g-label">PG A1 – Front View</div>
+    </div>
+    <div class="gallery-item reveal" onclick="openLightbox('images/main side view.jpeg')">
+      <img src="images/main side view.jpeg" alt="Side View" />
+      <div class="g-label">Side View</div>
+    </div>
+    <div class="gallery-item reveal" onclick="openLightbox('images/photo1.jpeg')">
+      <img src="images/photo1.jpeg" alt="Building" />
+      <div class="g-label">Building Exterior</div>
+    </div>
+    <div class="gallery-item reveal" onclick="openLightbox('images/photo2.jpeg')">
       <img src="images/photo2.jpeg" alt="Street View" />
       <div class="g-label">Street View</div>
+    </div>
+    <div class="gallery-item reveal" onclick="openLightbox('images/photo with board.png')">
+      <img src="images/photo with board.png" alt="PG Board" />
+      <div class="g-label">PG Board</div>
+    </div>
+    <div class="gallery-item reveal" onclick="openLightbox('images/photo with board 2.png')">
+      <img src="images/photo with board 2.png" alt="PG Board" />
+      <div class="g-label">PG Board 2</div>
+    </div>
+    <div class="gallery-item reveal" onclick="openLightbox('images/room photo.jpeg')">
+      <img src="images/room photo.jpeg" alt="Room" />
+      <div class="g-label">Room</div>
+    </div>
+    <div class="gallery-item reveal" onclick="openLightbox('images/room photo hall.jpeg')">
+      <img src="images/room photo hall.jpeg" alt="Room Hall" />
+      <div class="g-label">Room – Hall View</div>
+    </div>
+    <div class="gallery-item reveal" onclick="openLightbox('images/room photo tv.jpeg')">
+      <img src="images/room photo tv.jpeg" alt="Room with TV" />
+      <div class="g-label">Room with TV</div>
+    </div>
+    <div class="gallery-item reveal" onclick="openLightbox('images/single room.jpeg')">
+      <img src="images/single room.jpeg" alt="Single Room" />
+      <div class="g-label">Single Room</div>
+    </div>
+    <div class="gallery-item reveal" onclick="openLightbox('images/bigger room.jpeg')">
+      <img src="images/bigger room.jpeg" alt="Bigger Room" />
+      <div class="g-label">Bigger Room</div>
+    </div>
+    <div class="gallery-item reveal" onclick="openLightbox('images/another bigger room.jpeg')">
+      <img src="images/another bigger room.jpeg" alt="Another Bigger Room" />
+      <div class="g-label">Another Bigger Room</div>
+    </div>
+    <div class="gallery-item reveal" onclick="openLightbox('images/another bigger room hall.jpeg')">
+      <img src="images/another bigger room hall.jpeg" alt="Bigger Room Hall" />
+      <div class="g-label">Bigger Room – Hall View</div>
     </div>
   </div>
 </section>
@@ -545,42 +642,8 @@
     </div>
   </div>
 
-  <!-- Two Column Room Cards -->
-  <div id="room-cards" style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;max-width:980px;margin:0 auto;">
-
-    <!-- Card 1 -->
-    <div style="background:var(--white);border-radius:20px;overflow:hidden;box-shadow:0 16px 56px rgba(26,20,16,.13);display:flex;flex-direction:column;">
-      <div style="position:relative;height:220px;overflow:hidden;">
-        <img src="images/photo5.jpeg" alt="AC Room" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" />
-        <div style="position:absolute;top:14px;left:14px;background:var(--amber);color:#fff;font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .75rem;border-radius:20px;">&#10003; Available</div>
-      </div>
-      <div style="padding:1.6rem;display:flex;flex-direction:column;flex:1;justify-content:space-between;">
-        <div>
-          <div style="font-size:.65rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);margin-bottom:.4rem;">AC &middot; Double Sharing</div>
-          <div style="font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:800;color:var(--dark);margin-bottom:1rem;">AC Sharing Room</div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:.4rem .6rem;margin-bottom:1.1rem;">
-            <div style="font-size:.8rem;color:var(--mid);display:flex;align-items:center;gap:.35rem;"><span style="color:var(--amber);font-weight:700;">&#10003;</span>Air Conditioning</div>
-            <div style="font-size:.8rem;color:var(--mid);display:flex;align-items:center;gap:.35rem;"><span style="color:var(--amber);font-weight:700;">&#10003;</span>Geyser</div>
-            <div style="font-size:.8rem;color:var(--mid);display:flex;align-items:center;gap:.35rem;"><span style="color:var(--amber);font-weight:700;">&#10003;</span>Wi-Fi</div>
-            <div style="font-size:.8rem;color:var(--mid);display:flex;align-items:center;gap:.35rem;"><span style="color:var(--amber);font-weight:700;">&#10003;</span>Washing Machine</div>
-            <div style="font-size:.8rem;color:var(--mid);display:flex;align-items:center;gap:.35rem;"><span style="color:var(--amber);font-weight:700;">&#10003;</span>Double Bed</div>
-            <div style="font-size:.8rem;color:var(--mid);display:flex;align-items:center;gap:.35rem;"><span style="color:var(--amber);font-weight:700;">&#10003;</span>Wardrobe</div>
-          </div>
-          <div style="background:var(--warm);border-radius:8px;padding:.75rem .9rem;margin-bottom:1.1rem;font-size:.79rem;color:var(--mid);line-height:1.6;">
-            <span style="color:var(--amber);font-weight:700;">&#127869; Meals:</span> Breakfast + Dinner daily<br>Sat &amp; Sun: All 3 meals
-          </div>
-        </div>
-        <div style="border-top:1px solid var(--sand);padding-top:1rem;display:flex;align-items:center;justify-content:space-between;">
-          <div>
-            <div style="font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:900;color:var(--dark);line-height:1;">&#8377;7,000<span style="font-size:.8rem;font-weight:400;color:var(--mid);"> / bed</span></div>
-            <div style="font-size:.72rem;color:var(--light);margin-top:.15rem;">+ &#8377;3,000 deposit</div>
-          </div>
-          <a href="tel:+919310226604" style="background:var(--amber);color:#fff;padding:.6rem 1.1rem;border-radius:8px;font-size:.82rem;font-weight:700;text-decoration:none;">&#128222; Book</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Card 2 -->
+  <!-- Room Card -->
+  <div id="room-cards" style="max-width:480px;margin:0 auto;">
     <div style="background:var(--white);border-radius:20px;overflow:hidden;box-shadow:0 16px 56px rgba(26,20,16,.13);display:flex;flex-direction:column;">
       <div style="position:relative;height:220px;overflow:hidden;">
         <img src="images/photo4.jpeg" alt="Room" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" />
@@ -611,17 +674,7 @@
         </div>
       </div>
     </div>
-
   </div>
-
-  <style>
-    @media(max-width:700px){
-      #room-cards {
-        grid-template-columns: 1fr !important;
-        gap: 1.2rem !important;
-      }
-    }
-  </style>
 
   <!-- Food Schedule Note -->
   <div style="margin-top:2rem;background:var(--warm);border-left:4px solid var(--amber);border-radius:0 10px 10px 0;padding:1.2rem 1.5rem;display:flex;gap:1rem;align-items:flex-start;">
@@ -762,28 +815,65 @@
 </footer>
 
 <!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+<div class="lightbox" id="lightbox">
   <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <button class="lightbox-nav lightbox-prev" onclick="lightboxNav(-1)">&#8249;</button>
   <img id="lightbox-img" src="" alt="Photo" />
+  <button class="lightbox-nav lightbox-next" onclick="lightboxNav(1)">&#8250;</button>
+  <div class="lightbox-counter" id="lightbox-counter"></div>
 </div>
 
 <script>
+  let galleryImages = [];
+  let lightboxIndex = 0;
+
+  function buildGalleryList() {
+    galleryImages = Array.from(document.querySelectorAll('.gallery-item img'))
+      .map(img => img.src);
+  }
+
   function openLightbox(src) {
-    document.getElementById('lightbox-img').src = src;
+    if (!galleryImages.length) buildGalleryList();
+    const full = new URL(src, location.href).href;
+    lightboxIndex = galleryImages.findIndex(s => s === full);
+    if (lightboxIndex < 0) lightboxIndex = 0;
+    showLightboxImage();
     document.getElementById('lightbox').classList.add('active');
     document.body.style.overflow = 'hidden';
   }
+
+  function showLightboxImage() {
+    document.getElementById('lightbox-img').src = galleryImages[lightboxIndex];
+    document.getElementById('lightbox-counter').textContent =
+      (lightboxIndex + 1) + ' / ' + galleryImages.length;
+  }
+
+  function lightboxNav(dir) {
+    lightboxIndex = (lightboxIndex + dir + galleryImages.length) % galleryImages.length;
+    showLightboxImage();
+  }
+
   function closeLightbox() {
     document.getElementById('lightbox').classList.remove('active');
     document.body.style.overflow = '';
   }
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+  document.getElementById('lightbox').addEventListener('click', function(e) {
+    if (e.target === this) closeLightbox();
+  });
+
+  document.addEventListener('keydown', e => {
+    if (!document.getElementById('lightbox').classList.contains('active')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') lightboxNav(-1);
+    if (e.key === 'ArrowRight') lightboxNav(1);
+  });
 
   // Scroll-triggered autoplay for PG video
   const pgVideo = document.getElementById('pg-video');
   const pgPlaceholder = document.getElementById('video-placeholder');
   if (pgVideo) {
-    const observer = new IntersectionObserver((entries) => {
+    const videoObs = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           pgVideo.play().then(() => {
@@ -795,8 +885,26 @@
         }
       });
     }, { threshold: 0.4 });
-    observer.observe(pgVideo);
+    videoObs.observe(pgVideo);
   }
+
+  // Scroll reveal for sections and gallery items
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const delay = el.dataset.delay || 0;
+        setTimeout(() => el.classList.add('visible'), delay);
+        revealObs.unobserve(el);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.gallery-item, .amenity-card, .section-title, .section-desc, .divider, .video-wrapper, .room-card, .info-block, .contact-card, .contact-text').forEach((el, i) => {
+    el.classList.add('reveal');
+    el.dataset.delay = (i % 4) * 80;
+    revealObs.observe(el);
+  });
 </script>
 
 </body>
