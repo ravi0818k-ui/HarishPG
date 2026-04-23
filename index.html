@@ -238,6 +238,31 @@
       font-size: .72rem; font-weight: 600; padding: .25rem .6rem; border-radius: 20px;
     }
 
+    /* ── GLANCE VIDEO ── */
+    #glance { background: var(--cream); }
+    .video-wrapper {
+      position: relative; border-radius: 16px; overflow: hidden;
+      box-shadow: var(--shadow2); max-width: 900px; margin: 0 auto;
+      background: var(--dark);
+    }
+    .video-wrapper video {
+      width: 100%; display: block;
+      max-height: 520px; object-fit: cover;
+    }
+    .video-placeholder {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      background: rgba(26,20,16,.55); color: var(--white);
+      gap: .6rem; pointer-events: none;
+    }
+    .video-placeholder .play-icon {
+      width: 64px; height: 64px; border-radius: 50%;
+      background: var(--amber); display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem; margin-bottom: .4rem;
+    }
+    .video-placeholder p { font-size: .85rem; color: rgba(255,255,255,.6); }
+    #glance .video-wrapper video[data-playing="true"] + .video-placeholder { display: none; }
+
     /* ── AMENITIES ── */
     #amenities { background: var(--dark); }
     #amenities .section-label { color: var(--amber2); }
@@ -587,6 +612,30 @@
   </div>
 </section>
 
+<!-- GLANCE OF PG -->
+<section id="glance">
+  <div class="section-label">Video Tour</div>
+  <h2 class="section-title">Glance of PG</h2>
+  <p class="section-desc">A quick look around PG A1 — see your new home before you visit.</p>
+  <div class="divider"></div>
+  <div class="video-wrapper">
+    <video
+      id="pg-video"
+      muted
+      loop
+      playsinline
+      preload="metadata"
+    >
+      <source src="video.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+    <div class="video-placeholder" id="video-placeholder">
+      <div class="play-icon">▶</div>
+      <p>Scroll to watch the tour</p>
+    </div>
+  </div>
+</section>
+
 <!-- AMENITIES -->
 <section id="amenities">
   <div class="section-label">What's Included</div>
@@ -729,6 +778,25 @@
     document.body.style.overflow = '';
   }
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+  // Scroll-triggered autoplay for PG video
+  const pgVideo = document.getElementById('pg-video');
+  const pgPlaceholder = document.getElementById('video-placeholder');
+  if (pgVideo) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          pgVideo.play().then(() => {
+            if (pgPlaceholder) pgPlaceholder.style.display = 'none';
+          }).catch(() => {});
+        } else {
+          pgVideo.pause();
+          if (pgPlaceholder) pgPlaceholder.style.display = 'flex';
+        }
+      });
+    }, { threshold: 0.4 });
+    observer.observe(pgVideo);
+  }
 </script>
 
 </body>
