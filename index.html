@@ -372,6 +372,28 @@
     .nearby-list li { font-size: .88rem; color: var(--mid); display: flex; align-items: center; gap: .5rem; }
     .nearby-list li::before { content: '📍'; font-size: .8rem; }
 
+    /* ── WHATSAPP ── */
+    .wa-btn {
+      display: flex; align-items: center; justify-content: center; gap: .6rem;
+      background: #25D366; color: #fff;
+      padding: 1rem; border-radius: 8px; font-size: 1.1rem; font-weight: 700;
+      text-decoration: none; margin-top: .8rem;
+      transition: background .2s, transform .15s;
+      letter-spacing: .01em;
+    }
+    .wa-btn:hover { background: #1ebe5d; transform: translateY(-2px); }
+    .wa-float {
+      position: fixed; bottom: 24px; right: 24px; z-index: 999;
+      width: 60px; height: 60px; border-radius: 50%;
+      background: #25D366;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,.55);
+      transition: transform .2s, box-shadow .2s;
+      text-decoration: none;
+    }
+    .wa-float:hover { transform: scale(1.12); box-shadow: 0 6px 28px rgba(37,211,102,.7); }
+    .wa-float svg { width: 32px; height: 32px; }
+
     /* ── FOOTER ── */
     footer {
       background: var(--dark); color: rgba(255,255,255,.4);
@@ -542,14 +564,6 @@
       <img src="images/First.jpeg" alt="PG A1 Main View" />
       <div class="g-label">PG A1 – Main Entrance</div>
     </div>
-    <div class="gallery-item g-small" onclick="openLightbox('images/photo5.jpeg')">
-      <img src="images/photo5.jpeg" alt="AC Room" />
-      <div class="g-label">AC Room</div>
-    </div>
-    <div class="gallery-item g-small" onclick="openLightbox('images/photo4.jpeg')">
-      <img src="images/photo4.jpeg" alt="AC Room" />
-      <div class="g-label">AC Double Bed Room</div>
-    </div>
     <div class="gallery-item g-small" onclick="openLightbox('images/photo3.jpeg')">
       <img src="images/photo3.jpeg" alt="Bathroom" />
       <div class="g-label">Attached Bathroom</div>
@@ -642,11 +656,45 @@
     </div>
   </div>
 
-  <!-- Room Card -->
-  <div id="room-cards" style="max-width:480px;margin:0 auto;">
+  <!-- Two Column Room Cards -->
+  <div id="room-cards" style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;max-width:980px;margin:0 auto;">
+
+    <!-- Card 1 – ₹7,000 -->
     <div style="background:var(--white);border-radius:20px;overflow:hidden;box-shadow:0 16px 56px rgba(26,20,16,.13);display:flex;flex-direction:column;">
       <div style="position:relative;height:220px;overflow:hidden;">
-        <img src="images/photo4.jpeg" alt="Room" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" />
+        <img src="images/room photo tv.jpeg" alt="AC Room" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" />
+        <div style="position:absolute;top:14px;left:14px;background:var(--amber);color:#fff;font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .75rem;border-radius:20px;">&#10003; Available</div>
+      </div>
+      <div style="padding:1.6rem;display:flex;flex-direction:column;flex:1;justify-content:space-between;">
+        <div>
+          <div style="font-size:.65rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);margin-bottom:.4rem;">AC &middot; Double Sharing</div>
+          <div style="font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:800;color:var(--dark);margin-bottom:1rem;">AC Sharing Room</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:.4rem .6rem;margin-bottom:1.1rem;">
+            <div style="font-size:.8rem;color:var(--mid);display:flex;align-items:center;gap:.35rem;"><span style="color:var(--amber);font-weight:700;">&#10003;</span>Air Conditioning</div>
+            <div style="font-size:.8rem;color:var(--mid);display:flex;align-items:center;gap:.35rem;"><span style="color:var(--amber);font-weight:700;">&#10003;</span>Geyser</div>
+            <div style="font-size:.8rem;color:var(--mid);display:flex;align-items:center;gap:.35rem;"><span style="color:var(--amber);font-weight:700;">&#10003;</span>Wi-Fi</div>
+            <div style="font-size:.8rem;color:var(--mid);display:flex;align-items:center;gap:.35rem;"><span style="color:var(--amber);font-weight:700;">&#10003;</span>Washing Machine</div>
+            <div style="font-size:.8rem;color:var(--mid);display:flex;align-items:center;gap:.35rem;"><span style="color:var(--amber);font-weight:700;">&#10003;</span>Double Bed</div>
+            <div style="font-size:.8rem;color:var(--mid);display:flex;align-items:center;gap:.35rem;"><span style="color:var(--amber);font-weight:700;">&#10003;</span>Wardrobe</div>
+          </div>
+          <div style="background:var(--warm);border-radius:8px;padding:.75rem .9rem;margin-bottom:1.1rem;font-size:.79rem;color:var(--mid);line-height:1.6;">
+            <span style="color:var(--amber);font-weight:700;">&#127869; Meals:</span> Breakfast + Dinner daily<br>Sat &amp; Sun: All 3 meals
+          </div>
+        </div>
+        <div style="border-top:1px solid var(--sand);padding-top:1rem;display:flex;align-items:center;justify-content:space-between;">
+          <div>
+            <div style="font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:900;color:var(--dark);line-height:1;">&#8377;7,000<span style="font-size:.8rem;font-weight:400;color:var(--mid);"> / bed</span></div>
+            <div style="font-size:.72rem;color:var(--light);margin-top:.15rem;">+ &#8377;3,000 deposit</div>
+          </div>
+          <a href="tel:+919310226604" style="background:var(--amber);color:#fff;padding:.6rem 1.1rem;border-radius:8px;font-size:.82rem;font-weight:700;text-decoration:none;">&#128222; Book</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 2 – ₹8,000 -->
+    <div style="background:var(--white);border-radius:20px;overflow:hidden;box-shadow:0 16px 56px rgba(26,20,16,.13);display:flex;flex-direction:column;">
+      <div style="position:relative;height:220px;overflow:hidden;">
+        <img src="images/bigger room.jpeg" alt="Bigger Room" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" />
         <div style="position:absolute;top:14px;left:14px;background:var(--amber);color:#fff;font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .75rem;border-radius:20px;">&#10003; Available</div>
       </div>
       <div style="padding:1.6rem;display:flex;flex-direction:column;flex:1;justify-content:space-between;">
@@ -674,7 +722,14 @@
         </div>
       </div>
     </div>
+
   </div>
+
+  <style>
+    @media(max-width:700px){
+      #room-cards { grid-template-columns: 1fr !important; gap: 1.2rem !important; }
+    }
+  </style>
 
   <!-- Food Schedule Note -->
   <div style="margin-top:2rem;background:var(--warm);border-left:4px solid var(--amber);border-radius:0 10px 10px 0;padding:1.2rem 1.5rem;display:flex;gap:1rem;align-items:flex-start;">
@@ -805,9 +860,18 @@
         <div class="call-pulse"></div>
         📞 &nbsp;Call +91 93102 26604
       </a>
+      <a href="https://wa.me/919310226604?text=Hi%2C%20I%27m%20interested%20in%20a%20room%20at%20PG%20A1" target="_blank" rel="noopener" class="wa-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="22" height="22"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Chat on WhatsApp
+      </a>
     </div>
   </div>
 </section>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/919310226604?text=Hi%2C%20I%27m%20interested%20in%20a%20room%20at%20PG%20A1" target="_blank" rel="noopener" class="wa-float" aria-label="Chat on WhatsApp">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
 
 <!-- FOOTER -->
 <footer>
