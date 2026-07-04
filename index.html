@@ -540,44 +540,21 @@
     .find-pg-float {
       position: fixed; bottom: 24px; left: 24px; z-index: 998;
     }
-    .find-pg-expanded {
-      display: flex; align-items: center; gap: .6rem;
+    .find-pg-pill {
+      display: flex; align-items: center; gap: .5rem;
       background: var(--dark); color: var(--white);
-      padding: .8rem 1.2rem; border-radius: 30px;
+      padding: .6rem 1rem; border-radius: 24px;
       box-shadow: 0 4px 20px rgba(0,0,0,.35);
-      cursor: pointer; transition: transform .2s, box-shadow .2s;
-      animation: slideInBanner .4s ease;
+      cursor: pointer; transition: transform .2s, box-shadow .2s, background .2s;
+      font-size: .82rem; font-weight: 600; white-space: nowrap;
+      animation: slideInBanner .5s .8s ease both;
     }
-    .find-pg-expanded:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(0,0,0,.45); }
-    .find-pg-icon { font-size: 1.1rem; }
-    .find-pg-text { font-size: .85rem; font-weight: 600; white-space: nowrap; }
-    .find-pg-collapse {
-      background: rgba(255,255,255,.15); border: none; color: var(--white);
-      width: 24px; height: 24px; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1rem; cursor: pointer; margin-left: .3rem;
-      transition: background .2s;
-    }
-    .find-pg-collapse:hover { background: rgba(255,255,255,.3); }
-    .find-pg-collapsed {
-      display: none;
-      align-items: center; gap: .3rem;
-      background: rgba(26,20,16,.65); color: var(--white);
-      padding: .6rem .8rem; border-radius: 20px;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 4px 16px rgba(0,0,0,.25);
-      cursor: pointer; transition: transform .2s, background .2s;
-      font-size: .95rem;
-    }
-    .find-pg-collapsed:hover { background: rgba(26,20,16,.85); transform: scale(1.05); }
-    .find-pg-arrow { font-size: .8rem; font-weight: 700; }
-
-    .find-pg-float.collapsed .find-pg-expanded { display: none; }
-    .find-pg-float.collapsed .find-pg-collapsed { display: flex; }
+    .find-pg-pill:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(0,0,0,.45); background: var(--charcoal); }
+    .find-pg-pill-icon { font-size: 1rem; }
 
     @media (max-width: 768px) {
       .find-pg-float { bottom: 20px; left: 12px; }
-      .find-pg-expanded { padding: .7rem 1rem; font-size: .8rem; }
+      .find-pg-pill { padding: .55rem .9rem; font-size: .78rem; }
     }
     @keyframes slideInBanner {
       from { opacity: 0; transform: translateY(20px); }
@@ -701,11 +678,11 @@
       <div class="hero-slide-label">PG A1 – Shanti Nagar</div>
     </div>
     <div class="hero-slide" data-pg="jharsa-village">
-      <img src="PGA1 jharsa village-done/jharsa village new 1.jpeg" alt="PG A1 Jharsa Village" />
+      <img src="PGA1 jharsa village-done/main building.jpeg" alt="PG A1 Jharsa Village" />
       <div class="hero-slide-label">PG A1 – Jharsa Village</div>
     </div>
     <div class="hero-slide" data-pg="sector-46">
-      <img src="PGA1 Sec 46-done/20260618_171622.jpg" alt="PG A1 Sector 46" />
+      <img src="PGA1 Sec 46-done/main building.jpg" alt="PG A1 Sector 46" />
       <div class="hero-slide-label">PG A1 – Sector 46</div>
     </div>
     <div class="hero-slide" data-pg="saraswati-vihar">
@@ -824,14 +801,9 @@
 
 <!-- FIND PG FLOATING BUTTON (left side) -->
 <div class="find-pg-float" id="find-pg-float">
-  <div class="find-pg-expanded" id="find-pg-expanded" onclick="openOfficeFinder()">
-    <span class="find-pg-icon">📍</span>
-    <span class="find-pg-text">Find PG Near Office</span>
-    <button class="find-pg-collapse" onclick="collapseFindPG(event)">‹</button>
-  </div>
-  <div class="find-pg-collapsed" id="find-pg-collapsed" onclick="expandFindPG()">
-    <span>📍</span>
-    <span class="find-pg-arrow">›</span>
+  <div class="find-pg-pill" onclick="openOfficeFinder()">
+    <span class="find-pg-pill-icon">📍</span>
+    <span>Find PG Near Office</span>
   </div>
 </div>
 
@@ -1249,15 +1221,6 @@ document.addEventListener('DOMContentLoaded', () => {
 // ── LOCATION SUGGESTION ──
 function initLocationBanner() {
   // The floating button is already visible by default (expanded state)
-}
-
-function collapseFindPG(e) {
-  e.stopPropagation();
-  document.getElementById('find-pg-float').classList.add('collapsed');
-}
-
-function expandFindPG() {
-  document.getElementById('find-pg-float').classList.remove('collapsed');
 }
 
 function openOfficeFinder() {
